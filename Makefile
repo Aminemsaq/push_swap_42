@@ -5,7 +5,7 @@ RM      = rm -rf
 
 INCLUDE = push_swap.h
 
-SRC     = main.c utils_join.c
+SRC     = main.c utils_join.c utils_validation.c utils_convert_int.c
 
 OBJ     = $(SRC:.c=.o)
 

@@ -1,28 +1,5 @@
 #include "push_swap.h"
 
-int help_join(char *number)
-{
-    char *str = ft_strtrim(number, " ");
-    
-    if (str[0] == '\0') {
-        free(str);
-        return 0;
-    }
-
-    free(str);
-    return 1;
-}
-void free_double(char **tbl)
-{
-    int i = 0;
-    while (tbl[i])
-    {
-        free(tbl[i]);
-        i++;
-    }
-    free(tbl);
-}
-
 char **joining(int ac, char **av)
 {
     int i = 1;
@@ -50,4 +27,27 @@ char **joining(int ac, char **av)
     numbers = ft_split(long_number, ' ');
     free(long_number);
     return numbers;
+}
+
+int help_join(char *number)
+{
+    char *str = ft_strtrim(number, " ");
+    
+    if (str[0] == '\0') {
+        free(str);
+        return 0;
+    }
+    free(str);
+    return 1;
+}
+
+void free_double(char **tbl)
+{
+    int i = 0;
+    while (tbl[i])
+    {
+        free(tbl[i]);
+        i++;
+    }
+    free(tbl);
 }
