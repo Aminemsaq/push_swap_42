@@ -11,8 +11,10 @@ int main(int ac, char **av)
     long_numbers = joining(ac, av);
     if (!long_numbers)
         return 0;
-    if (!ft_parsing(long_numbers))
+    if (!ft_parsing(long_numbers)){
+        free_double(long_numbers);
         return 0;
+        }
     free_double(long_numbers);
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 14:16:53 by amsaq             #+#    #+#             */
-/*   Updated: 2024/11/24 21:47:58 by amsaq            ###   ########.fr       */
+/*   Updated: 2025/03/09 20:42:30 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,11 @@ static int	my_isspace(char c)
 	return (0);
 }
 
-static int	overflow_values(int sign)
+long	ft_atoi(const char *str)
 {
-	if (sign == -1)
-		return (0);
-	else
-		return (-1);
-}
-
-int	ft_atoi(const char *str)
-{
-	int					i;
-	unsigned long long	result;
-	int					sign;
+	int				i;
+	long			result;
+	int				sign;
 
 	i = 0;
 	sign = 1;
@@ -47,11 +39,8 @@ int	ft_atoi(const char *str)
 	result = 0;
 	while (ft_isdigit(str[i]))
 	{
-		if ((result > MAX_LL / 10)
-			|| (result == MAX_LL / 10 && (str[i] - 48) < MAX_LL % 10))
-			return (overflow_values(sign));
 		result = (result * 10) + (str[i] - 48);
 		i++;
 	}
-	return ((int)result * sign);
+	return (result * sign);
 }

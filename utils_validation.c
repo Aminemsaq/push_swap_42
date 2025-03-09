@@ -41,15 +41,16 @@ int ft_parsing(char **numbers) {
         }
         i++;
     }
-    int *numbers_int = convert_to_int(numbers);
-    if (numbers_int == NULL) {
+    long *numbers_int = convert_to_int(numbers);
+    if(numbers_int == NULL){
         return 0;
     }
     i = 0;
     while (numbers_int[i])
     {
-        printf("%d\n", numbers_int[i]);
+        printf("%ld\n", numbers_int[i]);
         i++;
     }
+    free(numbers_int);
     return 1;
 }
