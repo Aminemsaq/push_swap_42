@@ -2,7 +2,7 @@
 
 int ft_isvalid(char c)
 {
-    if ((c >= '0' && c <= '9'))
+    if (((c >= '0' && c <= '9') || c == '\t'))
         return 1;
     return 0;
 }
@@ -15,7 +15,7 @@ int is_valid_number(char *number)
     j = 0;
     sign_t = 0;
     if ((number[0] == '+' || number[0] == '-') && !number[1])
-        return (printf("Error\n"), 0);
+        return (printf("Errorn\n"), 0);
     while (number[j] == '-' || number[j] == '+')
     {
         if (++sign_t > 1)
@@ -32,9 +32,11 @@ int is_valid_number(char *number)
 }
 
 int ft_parsing(char **numbers) {
-    int i;
+    int		i;
+    int     j;
 
     i = 0;
+    j = 0;
     while (numbers[i]) {
         if (!is_valid_number(numbers[i])) {
             return 0;
@@ -42,15 +44,52 @@ int ft_parsing(char **numbers) {
         i++;
     }
     long *numbers_int = convert_to_int(numbers);
-    if(numbers_int == NULL){
+    if(numbers_int == NULL)
         return 0;
-    }
-    i = 0;
-    while (numbers_int[i])
-    {
-        printf("%ld\n", numbers_int[i]);
-        i++;
+    if(!check_dupl(numbers_int, i) || check_sorted(numbers_int, i)){
+        printf("Error");
+        free(numbers_int);
+        return 0;
     }
     free(numbers_int);
     return 1;
 }
+
+
+int check_dupl(long *numbers_int, int size)
+{
+    int i = 0;
+    int j;
+
+
+    while(i < size)
+    {
+        j = i + 1;
+        while(j < size)
+        {
+            if(numbers_int[i] == numbers_int[j])
+                return 0;
+            j++;
+        }
+        i++;
+    }
+    return 1;
+}
+
+int check_sorted(long *numbers_int, int size)
+{
+    int i = 0;
+    int j;
+
+    while (i < size) {
+        j = i + 1; 
+        while (j < size) {
+            if (numbers_int[i] > numbers_int[j]) {
+                return 0;
+            }
+            j++;
+        }
+        i++;
+    }
+    return 1;
+    }

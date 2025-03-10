@@ -2,6 +2,9 @@
 
 int main(int ac, char **av)
 {
+    t_stack stack_a;
+    t_stack stack_b;
+    
     char **long_numbers;
     if (ac == 2 && av[1][0] == '\0')
     {
@@ -14,7 +17,8 @@ int main(int ac, char **av)
     if (!ft_parsing(long_numbers)){
         free_double(long_numbers);
         return 0;
-        }
+    }
+    ft_init_stack();
     free_double(long_numbers);
     return 0;
 }

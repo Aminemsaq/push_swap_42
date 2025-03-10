@@ -9,6 +9,7 @@ char **joining(int ac, char **av)
     while (i < ac)
     {
         if (help_join(av[i]) == 0){
+            free(long_number);
             printf("Erroor");
             return NULL;
         }
@@ -25,13 +26,16 @@ char **joining(int ac, char **av)
         i++;
     }
     numbers = ft_split(long_number, ' ');
+    
     free(long_number);
     return numbers;
 }
 
 int help_join(char *number)
 {
-    char *str = ft_strtrim(number, " ");
+    char *str = ft_strtrim(number);
+    if (!str)
+        return (0);
     
     if (str[0] == '\0') {
         free(str);

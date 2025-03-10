@@ -6,7 +6,7 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 22:29:29 by amsaq             #+#    #+#             */
-/*   Updated: 2025/03/09 20:35:30 by amsaq            ###   ########.fr       */
+/*   Updated: 2025/03/09 22:36:47 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 void	*ft_calloc(size_t count, size_t size);
-char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strtrim(char const *s1);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
