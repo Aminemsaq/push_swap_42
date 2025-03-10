@@ -6,18 +6,20 @@
 #include <../libft/libft.h>
 #include <limits.h>
 
-typedef struct {
+typedef struct
+{
     int *numbers_int;
     int size;
-} 	Data;
+} Data;
 
-
-typedef struct s_node {
+typedef struct s_node
+{
     int value;
     struct s_node *next;
 } t_node;
 
-typedef struct s_stack {
+typedef struct s_stack
+{
     t_node *top;
     int size;
 } t_stack;
@@ -36,6 +38,5 @@ void push(t_stack *stack, int value);
 int pop(t_stack *stack);
 void print_stack(t_stack *stack);
 void free_stack(t_stack *stack);
-
 
 #endif

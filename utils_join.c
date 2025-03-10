@@ -11,7 +11,7 @@ char **joining(int ac, char **av)
         if (help_join(av[i]) == 0)
         {
             printf("Erroor");
-            return(free(long_number) ,NULL);
+            return (free(long_number), NULL);
         }
         char *temp = ft_strjoin(long_number, av[i]);
         free(long_number);
