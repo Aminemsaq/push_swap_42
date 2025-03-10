@@ -30,7 +30,6 @@ int is_valid_number(char *number)
     }
     return (1);
 }
-
 int ft_parsing(char **numbers, Data *data)
 {
     int i;

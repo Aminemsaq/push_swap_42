@@ -4,7 +4,7 @@ char **joining(int ac, char **av)
 {
     int i = 1;
     char *long_number = NULL;
-    char **numbers = NULL;
+    char **numbers = NULL   ;
 
     while (i < ac)
     {
@@ -33,7 +33,6 @@ int help_join(char *number)
     char *str = ft_strtrim(number);
     if (!str)
         return (0);
-
     if (str[0] == '\0')
     {
         free(str);
