@@ -31,43 +31,45 @@ int is_valid_number(char *number)
     return (1);
 }
 
-int ft_parsing(char **numbers) {
-    int		i;
-    int     j;
+int ft_parsing(char **numbers, Data *data)
+{
+    int i;
+    int j;
 
     i = 0;
     j = 0;
-    while (numbers[i]) {
-        if (!is_valid_number(numbers[i])) {
+    while (numbers[i])
+    {
+        if (!is_valid_number(numbers[i]))
             return 0;
-        }
         i++;
     }
-    long *numbers_int = convert_to_int(numbers);
-    if(numbers_int == NULL)
+    int *numbers_int = convert_to_int(numbers);
+    if (numbers_int == NULL)
         return 0;
-    if(!check_dupl(numbers_int, i) || check_sorted(numbers_int, i)){
+    if (!check_dupl(numbers_int, i))
+    {
         printf("Error");
-        free(numbers_int);
-        return 0;
+        return (free(numbers_int), 0);
     }
-    free(numbers_int);
+    if (check_sorted(numbers_int, i))
+        return (free(numbers_int), 0);
+    data->numbers_int = numbers_int;
+    data->size = i;
     return 1;
 }
 
-
-int check_dupl(long *numbers_int, int size)
+int check_dupl(int *numbers_int, int size)
 {
     int i = 0;
     int j;
 
-
-    while(i < size)
+    while (i < size)
     {
         j = i + 1;
-        while(j < size)
+        while (j < size)
         {
-            if(numbers_int[i] == numbers_int[j])
+            if (numbers_int[i] == numbers_int[j])
                 return 0;
             j++;
         }
@@ -76,15 +78,18 @@ int check_dupl(long *numbers_int, int size)
     return 1;
 }
 
-int check_sorted(long *numbers_int, int size)
+int check_sorted(int *numbers_int, int size)
 {
     int i = 0;
     int j;
 
-    while (i < size) {
-        j = i + 1; 
-        while (j < size) {
-            if (numbers_int[i] > numbers_int[j]) {
+    while (i < size)
+    {
+        j = i + 1;
+        while (j < size)
+        {
+            if (numbers_int[i] > numbers_int[j])
+            {
                 return 0;
             }
             j++;
@@ -92,4 +97,4 @@ int check_sorted(long *numbers_int, int size)
         i++;
     }
     return 1;
-    }
+}
