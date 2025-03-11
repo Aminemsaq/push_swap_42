@@ -14,13 +14,10 @@ void init_push_swap(Data data)
 {
 	t_stack *stack_a = init_stack();
 	if(!stack_a)
-	{
-		free(data.numbers_int);
 		return ;
-	}
+	
 	push_stack_a(&data, stack_a);
 	print_stack(stack_a);
-
-	free(data.numbers_int);
+	
 	free_stack(stack_a);
 }

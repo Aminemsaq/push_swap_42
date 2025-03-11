@@ -1,31 +1,29 @@
 #include "push_swap.h"
 
-char **joining(int ac, char **av)
+int joining(int ac, char **av, Data *data)
 {
     int i = 1;
-    char *long_number = NULL;
-    char **numbers = NULL   ;
 
     while (i < ac)
     {
         if (help_join(av[i]) == 0)
         {
             printf("Erroor");
-            return (free(long_number), NULL);
+            return 0;
         }
-        char *temp = ft_strjoin(long_number, av[i]);
-        free(long_number);
-        long_number = temp;
+        char *temp = ft_strjoin(data->long_number, av[i]);
+        free(data->long_number);
+        data->long_number = temp;
         if (i < ac - 1)
         {
-            temp = ft_strjoin(long_number, " ");
-            free(long_number);
-            long_number = temp;
+            temp = ft_strjoin(data->long_number, " ");
+            free(data->long_number);
+            data->long_number = temp;
         }
         i++;
     }
-    numbers = ft_split(long_number, ' ');
-    return (free(long_number), numbers);
+    data->long_split = ft_split(data->long_number, ' ');
+    return 1;
 }
 
 int help_join(char *number)
@@ -42,13 +40,31 @@ int help_join(char *number)
     return 1;
 }
 
-void free_double(char **tbl)
+void free_data(Data *data)
 {
     int i = 0;
-    while (tbl[i])
+
+    if (!data)
+        return;
+
+    if (data->long_split)
     {
-        free(tbl[i]);
-        i++;
+        while (data->long_split[i])
+        {
+            free(data->long_split[i]);
+            i++;
+        }
+        free(data->long_split);
     }
-    free(tbl);
+
+    if (data->long_number)
+        free(data->long_number);
+
+    if (data->numbers_int)
+        free(data->numbers_int);
+
+    data->numbers_int = NULL;
+    data->long_number = NULL;
+    data->long_split = NULL;
+    data->size = 0;
 }

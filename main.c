@@ -2,20 +2,14 @@
 
 int main(int ac, char **av)
 {
-    Data data;
-    char **long_numbers;
-    if (ac == 2 && av[1][0] == '\0')
-    {
-        printf("Error: ARGS\n");
-        return 1;
-    }
-    long_numbers = joining(ac, av);
-    if (!long_numbers)
+     Data data = {NULL, NULL, NULL, 0};
+    if (ac == 1)
         return 0;
-    if (!ft_parsing(long_numbers, &data))
-        return (free_double(long_numbers), 0);
-
+     if (joining(ac, av, &data) == 0)
+         return (free_data(&data),0);
+    if (!ft_parsing(&data))
+         return (free_data(&data),0);
     init_push_swap(data);
-    free_double(long_numbers);
+    free_data(&data);
     return 0;
 }

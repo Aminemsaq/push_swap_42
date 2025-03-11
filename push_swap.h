@@ -9,6 +9,8 @@
 typedef struct
 {
     int *numbers_int;
+    char *long_number;
+    char **long_split;
     int size;
 } Data;
 
@@ -24,12 +26,12 @@ typedef struct s_stack
     int size;
 } t_stack;
 
-char **joining(int ac, char **av);
+int joining(int ac, char **av, Data *data);
 void free_double(char **tbl);
 int help_join(char *number);
 int ft_isvalid(char c);
-int ft_parsing(char **numbers, Data *data);
-int *convert_to_int(char **numbers);
+int ft_parsing(Data *data);
+int convert_to_int(Data *data);
 int check_dupl(int *numbers_int, int size);
 int check_sorted(int *numbers_int, int size);
 void init_push_swap(Data data);
@@ -38,5 +40,6 @@ void push(t_stack *stack, int value);
 int pop(t_stack *stack);
 void print_stack(t_stack *stack);
 void free_stack(t_stack *stack);
+void free_data(Data *data);
 
 #endif

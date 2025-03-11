@@ -15,7 +15,7 @@ int is_valid_number(char *number)
     j = 0;
     sign_t = 0;
     if ((number[0] == '+' || number[0] == '-') && !number[1])
-        return (printf("Errorn\n"), 0);
+        return (printf("Error\n"), 0);
     while (number[j] == '-' || number[j] == '+')
     {
         if (++sign_t > 1)
@@ -30,30 +30,31 @@ int is_valid_number(char *number)
     }
     return (1);
 }
-int ft_parsing(char **numbers, Data *data)
+int ft_parsing(Data *data)
 {
     int i;
     int j;
 
     i = 0;
     j = 0;
-    while (numbers[i])
+    while (data->long_split[i])
     {
-        if (!is_valid_number(numbers[i]))
+        if (!is_valid_number(data->long_split[i]))
             return 0;
         i++;
     }
-    int *numbers_int = convert_to_int(numbers);
-    if (numbers_int == NULL)
+    if(convert_to_int(data) == 0)
         return 0;
-    if (!check_dupl(numbers_int, i))
+    if (data->numbers_int == NULL)
+         return 0;
+    if (!check_dupl(data->numbers_int, i))
     {
-        printf("Error");
-        return (free(numbers_int), 0);
+        ft_putstr_fd("Error\n", 2);
+        return (0);
     }
-    if (check_sorted(numbers_int, i))
-        return (free(numbers_int), 0);
-    data->numbers_int = numbers_int;
+    if (check_sorted(data->numbers_int, i)){
+         return (0);
+    }
     data->size = i;
     return 1;
 }
@@ -95,5 +96,6 @@ int check_sorted(int *numbers_int, int size)
         }
         i++;
     }
+   
     return 1;
 }

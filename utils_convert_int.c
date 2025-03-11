@@ -1,27 +1,26 @@
 #include "push_swap.h"
 
-int *convert_to_int(char **numbers)
+int convert_to_int(Data *data)
 {
     int count = 0;
     long num;
     int i = 0;
 
-    while (numbers[count])
+    while (data->long_split[count])
         count++;
-    int *numbers_int = malloc(sizeof(int) * count);
-    if (numbers_int == NULL)
-        return NULL;
+    data->numbers_int = malloc(sizeof(int) * count);
+    if (!data->numbers_int)
+        return 0;
     while (i < count)
     {
-        num = ft_atoi(numbers[i]);
+        num = ft_atoi(data->long_split[i]);
         if (num > INT_MAX || num < INT_MIN)
         {
             printf("Error");
-            free(numbers_int);
-            return NULL;
+            return 0;
         }
-        numbers_int[i] = (int)num;
+        data->numbers_int[i] = (int)num;
         i++;
     }
-    return numbers_int;
+    return 1;
 }
