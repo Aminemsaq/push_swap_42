@@ -18,13 +18,16 @@ typedef struct s_node
 {
     int value;
     struct s_node *next;
+    struct s_node *prev;
 } t_node;
 
 typedef struct s_stack
 {
     t_node *top;
+    t_node *bottom;
     int size;
 } t_stack;
+
 
 int joining(int ac, char **av, Data *data);
 void free_double(char **tbl);
@@ -38,8 +41,12 @@ void init_push_swap(Data data);
 t_stack *init_stack();
 void push(t_stack *stack, int value);
 int pop(t_stack *stack);
-void print_stack(t_stack *stack);
 void free_stack(t_stack *stack);
+void print_stack(t_stack *stack);
 void free_data(Data *data);
+void sp(t_stack *stack);
+void ss(t_stack *stack_a, t_stack *stack_b);
+void pa(t_stack *stack_a, t_stack *stack_b);
+void pb(t_stack *stack_a, t_stack *stack_b);
 
 #endif
