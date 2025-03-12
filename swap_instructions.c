@@ -19,6 +19,8 @@ void sab(t_stack *stack)
     first->prev = second;
 
     stack->top = second;
+
+    printf("sab\n");
 }
 
 void ss(t_stack *stack_a, t_stack *stack_b)
