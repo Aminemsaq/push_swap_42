@@ -16,7 +16,6 @@ void rrab(t_stack *stack)
     stack->top->prev = last_node;
 
     stack->top = last_node;
-    printf("ra\n");
 }
 
 void rrr(t_stack *stack_a, t_stack *stack_b)

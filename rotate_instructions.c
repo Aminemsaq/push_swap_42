@@ -19,7 +19,6 @@ void rab(t_stack *stack)
     }
 
     stack->bottom = top_node;
-    printf("ra\n");
 }
 void rr(t_stack *stack_a, t_stack *stack_b)
 {

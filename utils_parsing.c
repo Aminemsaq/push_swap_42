@@ -33,10 +33,8 @@ int is_valid_number(char *number)
 int ft_parsing(Data *data)
 {
     int i;
-    int j;
 
     i = 0;
-    j = 0;
     while (data->long_split[i])
     {
         if (!is_valid_number(data->long_split[i]))
