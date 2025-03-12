@@ -5,7 +5,7 @@ RM      = rm -rf
 
 INCLUDE = push_swap.h
 
-SRC     = main.c utils_join.c utils_parsing.c utils_convert_int.c init_push_swap.c utils_stack.c push_instructions.c swap_instructions.c
+SRC     = main.c utils_join.c utils_parsing.c utils_convert_int.c init_push_swap.c utils_stack.c push_instructions.c swap_instructions.c rotate_instructions.c reverse_rotate_instructions.c
 OBJ     = $(SRC:.c=.o)
 
 LIBFT_DIR = ./libft

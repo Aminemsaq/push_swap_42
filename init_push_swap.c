@@ -18,6 +18,9 @@ void init_push_swap(Data data)
 	
 	push_stack_a(&data, stack_a);
 	print_stack(stack_a);
-	
+	rab(stack_a);
+	print_stack(stack_a);
+	rrab(stack_a);
+	print_stack(stack_a);
 	free_stack(stack_a);
 }

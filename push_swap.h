@@ -44,9 +44,13 @@ int pop(t_stack *stack);
 void free_stack(t_stack *stack);
 void print_stack(t_stack *stack);
 void free_data(Data *data);
-void sp(t_stack *stack);
+void sab(t_stack *stack);
 void ss(t_stack *stack_a, t_stack *stack_b);
 void pa(t_stack *stack_a, t_stack *stack_b);
 void pb(t_stack *stack_a, t_stack *stack_b);
+void rrab(t_stack *stack);
+void rrr(t_stack *stack_a, t_stack *stack_b);
+void rab(t_stack *stack);
+void rr(t_stack *stack_a, t_stack *stack_b);
 
 #endif

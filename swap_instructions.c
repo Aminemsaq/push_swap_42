@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void sp(t_stack *stack)
+void sab(t_stack *stack)
 {
     if(!stack || stack->size < 2)
         return ;
@@ -23,6 +23,6 @@ void sp(t_stack *stack)
 
 void ss(t_stack *stack_a, t_stack *stack_b)
 {
-    sp(stack_a);
-    sp(stack_b);
+    sab(stack_a);
+    sab(stack_b);
 }
