@@ -1,46 +1,42 @@
 #include "push_swap.h"
 
-void sa(t_stack *stack)
+void	sa(t_stack *stack)
 {
-    if (!stack || stack->size < 2)
-        return;
+	t_node	*first;
+	t_node	*second;
 
-    t_node *first = stack->top;
-    t_node *second = first->next;
-
-    first->next = second->next;
-    second->next = first;
-
-    stack->top = second;
-    index_stack(stack);
-
-    printf("sa\n");
+	if (!stack || stack->size < 2)
+		return ;
+	first = stack->top;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	stack->top = second;
+	index_stack(stack);
+	printf("sa\n");
 }
 
-void sb(t_stack *stack)
+void	sb(t_stack *stack)
 {
-    if (!stack || stack->size < 2)
-        return;
+	t_node	*first;
+	t_node	*second;
 
-    t_node *first = stack->top;
-    t_node *second = first->next;
-
-    first->next = second->next;
-    second->next = first;
-
-    stack->top = second;
-    index_stack(stack);
-
-    printf("sb\n");
+	if (!stack || stack->size < 2)
+		return ;
+	first = stack->top;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	stack->top = second;
+	index_stack(stack);
+	printf("sb\n");
 }
 
-void ss(t_stack *stack_a, t_stack *stack_b)
+void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-    sa(stack_a);
-    sb(stack_b);
-
-    index_stack(stack_a);
-    index_stack(stack_b);
-
-    printf("ss\n");
+	sa(stack_a);
+	sb(stack_b);
+	index_stack(stack_a);
+	index_stack(stack_b);
+	printf("ss\n");
 }
