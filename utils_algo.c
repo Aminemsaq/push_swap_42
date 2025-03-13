@@ -2,6 +2,6 @@
 
 void sort_two(t_stack *stack)
 {
-    if(stack->top->index != 0)
+    if(stack->top->index == 0)
         sa(stack);
 }

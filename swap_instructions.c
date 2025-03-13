@@ -12,6 +12,9 @@ void sa(t_stack *stack)
     second->next = first;
 
     stack->top = second;
+    index_stack(stack);
+
+    printf("sa\n");
 }
 
 void sb(t_stack *stack)
@@ -26,10 +29,18 @@ void sb(t_stack *stack)
     second->next = first;
 
     stack->top = second;
+    index_stack(stack);
+
+    printf("sb\n");
 }
 
 void ss(t_stack *stack_a, t_stack *stack_b)
 {
     sa(stack_a);
     sb(stack_b);
+
+    index_stack(stack_a);
+    index_stack(stack_b);
+
+    printf("ss\n");
 }

@@ -18,9 +18,12 @@ void init_push_swap(Data data)
 	push_stack_a(&data, stack_a);
 	index_stack(stack_a);
 	print_stack(stack_a);
-	if(stack_a->size == 2)
-	 	sort_two(stack_a);
+	 if(stack_a->size == 2)
+	  	sort_two(stack_a);
+	 if(stack_a->size == 3)
+	  	sort_three(stack_a);	
 	printf("%d\n",stack_a->top->value);
+	print_stack(stack_a);
 	print_stack_with_index(stack_a);
 	free_stack(stack_a);
 }
