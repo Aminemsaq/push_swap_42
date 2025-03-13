@@ -6,7 +6,6 @@ t_stack *init_stack()
     if (!stack)
         return NULL;
     stack->top = NULL;
-    stack->bottom = NULL;
     stack->size = 0;
     return stack;
 }
@@ -18,13 +17,6 @@ void push(t_stack *stack, int value)
         return;
     new_node->value = value;
     new_node->next = stack->top;
-    new_node->prev = NULL;
-
-    if (stack->top)
-        stack->top->prev = new_node;
-    else
-        stack->bottom = new_node;
-
     stack->top = new_node;
     stack->size++;
 }
@@ -37,12 +29,6 @@ int pop(t_stack *stack)
     t_node *temp = stack->top;
     int value = temp->value;
     stack->top = temp->next;
-
-    if (stack->top)
-        stack->top->prev = NULL;
-    else
-        stack->bottom = NULL;
-
     free(temp);
     stack->size--;
     return value;
@@ -50,7 +36,7 @@ int pop(t_stack *stack)
 
 void free_stack(t_stack *stack)
 {
-    while (stack->size > 0)
+    while (stack->top)
         pop(stack);
     free(stack);
 }

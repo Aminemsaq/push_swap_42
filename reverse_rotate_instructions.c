@@ -1,25 +1,49 @@
 #include "push_swap.h"
 
-void rrab(t_stack *stack)
+void rra(t_stack *stack)
 {
     if (!stack || !stack->top || stack->size < 2)
         return;
 
-    t_node *last_node = stack->bottom;
-    t_node *second_last_node = last_node->prev;
+    t_node *prev = NULL;
+    t_node *current = stack->top;
 
-    stack->bottom = second_last_node;
-    stack->bottom->next = NULL;
+    while (current->next)
+    {
+        prev = current;
+        current = current->next;
+    }
 
-    last_node->prev = NULL;
-    last_node->next = stack->top;
-    stack->top->prev = last_node;
+    if (prev)
+        prev->next = NULL;
 
-    stack->top = last_node;
+    current->next = stack->top;
+    stack->top = current;
+}
+
+void rrb(t_stack *stack)
+{
+    if (!stack || !stack->top || stack->size < 2)
+        return;
+
+    t_node *prev = NULL;
+    t_node *current = stack->top;
+
+    while (current->next)
+    {
+        prev = current;
+        current = current->next;
+    }
+
+    if (prev)
+        prev->next = NULL;
+
+    current->next = stack->top;
+    stack->top = current;
 }
 
 void rrr(t_stack *stack_a, t_stack *stack_b)
 {
-    rrab(stack_a);
-    rrab(stack_b);
+    rra(stack_a);
+    rrb(stack_b);
 }

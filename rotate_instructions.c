@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void rab(t_stack *stack)
+void ra(t_stack *stack)
 {
     if (!stack || !stack->top || stack->size < 2)
         return;
@@ -9,19 +9,36 @@ void rab(t_stack *stack)
     t_node *second_node = top_node->next;
 
     stack->top = second_node;
-    stack->top->prev = NULL;
-
     top_node->next = NULL;
 
-    if (stack->bottom) {
-        stack->bottom->next = top_node;
-        top_node->prev = stack->bottom;
-    }
+    t_node *current = stack->top;
+    while (current->next)
+        current = current->next;
 
-    stack->bottom = top_node;
+    current->next = top_node;
 }
+
+void rb(t_stack *stack)
+{
+    if (!stack || !stack->top || stack->size < 2)
+        return;
+
+    t_node *top_node = stack->top;
+    t_node *second_node = top_node->next;
+
+    stack->top = second_node;
+    top_node->next = NULL;
+
+    t_node *current = stack->top;
+    while (current->next)
+        current = current->next;
+
+    current->next = top_node;
+}
+
 void rr(t_stack *stack_a, t_stack *stack_b)
 {
-    rab(stack_a);
-    rab(stack_b);
+    ra(stack_a);
+    rb(stack_b);
 }
+

@@ -17,14 +17,13 @@ typedef struct
 typedef struct s_node
 {
     int value;
+    int index;
     struct s_node *next;
-    struct s_node *prev;
 } t_node;
 
 typedef struct s_stack
 {
     t_node *top;
-    t_node *bottom;
     int size;
 } t_stack;
 
@@ -44,14 +43,19 @@ int pop(t_stack *stack);
 void free_stack(t_stack *stack);
 void print_stack(t_stack *stack);
 void free_data(Data *data);
-void sab(t_stack *stack);
+void rra(t_stack *stack);
+void rrb(t_stack *stack);
+void rrr(t_stack *stack_a, t_stack *stack_b);
+void ra(t_stack *stack);
+void rb(t_stack *stack);
+void rr(t_stack *stack_a, t_stack *stack_b);
+void sa(t_stack *stack);
+void sb(t_stack *stack);
 void ss(t_stack *stack_a, t_stack *stack_b);
 void pa(t_stack *stack_a, t_stack *stack_b);
 void pb(t_stack *stack_a, t_stack *stack_b);
-void rrab(t_stack *stack);
-void rrr(t_stack *stack_a, t_stack *stack_b);
-void rab(t_stack *stack);
-void rr(t_stack *stack_a, t_stack *stack_b);
 void sort_two(t_stack *stack);
 void sort_three(t_stack *a);
+void index_stack(t_stack *stack);
+void print_stack_with_index(t_stack *stack);
 #endif
