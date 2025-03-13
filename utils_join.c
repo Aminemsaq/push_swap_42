@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	joining(int ac, char **av, Data *data)
+int	joining(int ac, char **av, t_data *data)
 {
 	int		i;
 	char	*temp;
@@ -44,7 +44,7 @@ int	help_join(char *number)
 	return (1);
 }
 
-void	free_data(Data *data)
+void	free_data(t_data *data)
 {
 	int	i;
 

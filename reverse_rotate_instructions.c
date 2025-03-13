@@ -18,7 +18,6 @@ void	rra(t_stack *stack)
 		prev->next = NULL;
 	current->next = stack->top;
 	stack->top = current;
-	index_stack(stack);
 	printf("rra\n");
 }
 
@@ -40,7 +39,6 @@ void	rrb(t_stack *stack)
 		prev->next = NULL;
 	current->next = stack->top;
 	stack->top = current;
-	index_stack(stack);
 	printf("rrb\n");
 }
 
@@ -48,9 +46,5 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	rra(stack_a);
 	rrb(stack_b);
-
-	index_stack(stack_a);
-	index_stack(stack_b);
-
 	printf("rrr\n");
 }

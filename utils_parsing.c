@@ -30,7 +30,7 @@ int	is_valid_number(char *number)
 	}
 	return (1);
 }
-int	ft_parsing(Data *data)
+int	ft_parsing(t_data *data)
 {
 	int	i;
 
@@ -47,7 +47,7 @@ int	ft_parsing(Data *data)
 		return (0);
 	if (!check_dupl(data->numbers_int, i))
 	{
-		ft_putstr_fd("Error\n", 2);
+		printf("Error\n");
 		return (0);
 	}
 	if (check_sorted(data->numbers_int, i))

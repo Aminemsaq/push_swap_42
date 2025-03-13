@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	push_stack_a(Data *data, t_stack *stack_a)
+void	push_stack_a(t_data *data, t_stack *stack_a)
 {
 	int	i;
 
@@ -11,7 +11,7 @@ void	push_stack_a(Data *data, t_stack *stack_a)
 		i++;
 	}
 }
-void	init_push_swap(Data data)
+void	init_push_swap(t_data data)
 {
 	t_stack *stack_a = init_stack();
 	if (!stack_a)
@@ -24,7 +24,7 @@ void	init_push_swap(Data data)
 	if (stack_a->size == 3)
 		sort_three(stack_a);
 	printf("%d\n", stack_a->top->value);
+	// print_stack_with_index(stack_a);
 	print_stack(stack_a);
-	print_stack_with_index(stack_a);
 	free_stack(stack_a);
 }

@@ -12,8 +12,6 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 	stack_a->top = node_push;
 	stack_a->size++;
 	stack_b->size--;
-	index_stack(stack_a);
-	index_stack(stack_b);
 	printf("pa\n");
 }
 
@@ -30,9 +28,5 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 
 	stack_b->size++;
 	stack_a->size--;
-
-	index_stack(stack_a);
-	index_stack(stack_b);
-
 	printf("pb\n");
 }

@@ -15,27 +15,51 @@ t_stack	*init_stack(void)
 void	push(t_stack *stack, int value)
 {
 	t_node	*new_node;
+	t_node	*current;
 
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)
 		return ;
 	new_node->value = value;
-	new_node->next = stack->top;
-	stack->top = new_node;
+	new_node->next = NULL;
+	if (!stack->top)
+		stack->top = new_node;
+	else
+	{
+		current = stack->top;
+		while (current->next)
+			current = current->next;
+		current->next = new_node;
+	}
 	stack->size++;
 }
 
 int	pop(t_stack *stack)
 {
-	t_node	*temp;
+	t_node	*current;
+	t_node	*prev;
 	int		value;
 
 	if (!stack->top)
 		return (-1);
-	temp = stack->top;
-	value = temp->value;
-	stack->top = temp->next;
-	free(temp);
+	if (!stack->top->next)
+	{
+		value = stack->top->value;
+		free(stack->top);
+		stack->top = NULL;
+	}
+	else
+	{
+		current = stack->top;
+		while (current->next)
+		{
+			prev = current;
+			current = current->next;
+		}
+		value = current->value;
+		free(current);
+		prev->next = NULL;
+	}
 	stack->size--;
 	return (value);
 }

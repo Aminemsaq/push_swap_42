@@ -1,18 +1,18 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <../libft/libft.h>
 # include <limits.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
 
-typedef struct
+typedef struct s_data
 {
 	int				*numbers_int;
 	char			*long_number;
 	char			**long_split;
 	int				size;
-}					Data;
+}					t_data;
 
 typedef struct s_node
 {
@@ -27,21 +27,28 @@ typedef struct s_stack
 	int				size;
 }					t_stack;
 
-int					joining(int ac, char **av, Data *data);
+char				*ft_strjoin(char *s1, char *s2);
+char				*ft_strdup(const char *s1);
+size_t				ft_strlen(const char *s);
+long				ft_atoi(const char *str, t_data *data);
+char				**ft_split(const char *s, char c);
+char				*ft_strtrim(char const *s1);
+size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
+int					joining(int ac, char **av, t_data *data);
 void				free_double(char **tbl);
 int					help_join(char *number);
 int					ft_isvalid(char c);
-int					ft_parsing(Data *data);
-int					convert_to_int(Data *data);
+int					ft_parsing(t_data *data);
+int					convert_to_int(t_data *data);
 int					check_dupl(int *numbers_int, int size);
 int					check_sorted(int *numbers_int, int size);
-void				init_push_swap(Data data);
+void				init_push_swap(t_data data);
 t_stack				*init_stack(void);
 void				push(t_stack *stack, int value);
 int					pop(t_stack *stack);
 void				free_stack(t_stack *stack);
 void				print_stack(t_stack *stack);
-void				free_data(Data *data);
+void				free_data(t_data *data);
 void				rra(t_stack *stack);
 void				rrb(t_stack *stack);
 void				rrr(t_stack *stack_a, t_stack *stack_b);

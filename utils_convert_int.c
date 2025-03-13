@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	convert_to_int(Data *data)
+int	convert_to_int(t_data *data)
 {
 	int		count;
 	long	num;
@@ -15,12 +15,7 @@ int	convert_to_int(Data *data)
 		return (0);
 	while (i < count)
 	{
-		num = ft_atoi(data->long_split[i]);
-		if (num > INT_MAX || num < INT_MIN)
-		{
-			printf("Error");
-			return (0);
-		}
+		num = ft_atoi(data->long_split[i], data);
 		data->numbers_int[i] = (int)num;
 		i++;
 	}
