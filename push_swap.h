@@ -18,6 +18,7 @@ typedef struct s_node
 {
 	int				value;
 	int				index;
+	int 			index_sorted;
 	struct s_node	*next;
 }					t_node;
 
@@ -64,4 +65,6 @@ void				sort_two(t_stack *stack);
 void				sort_three(t_stack *a);
 void				index_stack(t_stack *stack);
 void				print_stack_with_index(t_stack *stack);
+void				sort_four_five(t_stack *stack_a, t_stack *stack_b);
+void				index_stack_sorted(t_stack *stack);
 #endif

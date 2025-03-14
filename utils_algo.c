@@ -2,7 +2,7 @@
 
 void	sort_two(t_stack *stack)
 {
-	if (stack->top->index == 0)
+	if (stack->top->index != 0)
 		sa(stack);
 }
 
@@ -12,9 +12,9 @@ void	sort_three(t_stack *stack)
 	int	b;
 	int	c;
 
-	a = stack->top->index;
-	b = stack->top->next->index;
-	c = stack->top->next->next->index;
+	a = stack->top->value;
+	b = stack->top->next->value;
+	c = stack->top->next->next->value;
 	if (a > b && b < c && a < c)
 		sa(stack);
 	else if (a > b && b > c)
@@ -25,4 +25,58 @@ void	sort_three(t_stack *stack)
 		sa(stack), ra(stack);
 	else if (a < b && b > c && a > c)
 		rra(stack);
+}
+
+int find_min_index(t_stack *stack)
+{
+    t_node *current = stack->top;
+    int min = current->index_sorted;
+    int min_pos = 0;
+    int i = 0;
+
+    while (current)
+    {
+        if (current->index_sorted < min)
+        {
+            min = current->index_sorted;
+            min_pos = i;
+        }
+        current = current->next;
+        i++;
+    }
+    return min_pos;
+}
+void move_to_top(t_stack *stack, int min_index)
+{
+    int size = stack->size;
+
+    if (min_index <= size / 2)
+    {
+        while (min_index-- > 0)
+            ra(stack);
+    }
+    else
+    {
+        min_index = size - min_index;
+        while (min_index-- > 0)
+            rra(stack);
+    }
+}
+void sort_four_five(t_stack *stack_a, t_stack *stack_b)
+{
+    int min_index;
+    int size = stack_a->size;
+	index_stack_sorted(stack_a);
+	index_stack(stack_a);
+    while (size > 3)
+    {
+        min_index = find_min_index(stack_a); 
+        move_to_top(stack_a, min_index); 
+        pb(stack_a, stack_b);
+        size--;
+    }
+    sort_three(stack_a);
+    while (stack_b->size > 0){
+        pa(stack_a, stack_b);
+	}
 }

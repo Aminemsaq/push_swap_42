@@ -46,7 +46,7 @@ void	bubble_sort(int *arr, int size)
 	}
 }
 
-void	index_stack(t_stack *stack)
+void	index_stack_sorted(t_stack *stack)
 {
 	int		*sorted_values;
 	int		i;
@@ -67,7 +67,7 @@ void	index_stack(t_stack *stack)
 		{
 			if (current->value == sorted_values[i])
 			{
-				current->index = i;
+				current->index_sorted = i;
 				break ;
 			}
 			i++;
@@ -77,6 +77,23 @@ void	index_stack(t_stack *stack)
 	free(sorted_values);
 }
 
+void	index_stack(t_stack *stack)
+{
+	int		i;
+	t_node	*current;
+
+	if (!stack || stack->size == 0)
+		return ;
+	i = 0;
+	current = stack->top;
+	while (current)
+	{
+		current->index = i++;
+		current = current->next;
+	}
+}
+
+
 void	print_stack_with_index(t_stack *stack)
 {
 	t_node	*current;
@@ -85,8 +102,9 @@ void	print_stack_with_index(t_stack *stack)
 	printf("Stack (value, index): ");
 	while (current)
 	{
-		printf("(%d, %d) ", current->value, current->index);
+		printf("(%d, %d, %d) ", current->value, current->index, current->index_sorted);
 		current = current->next;
 	}
 	printf("\n");
 }
+

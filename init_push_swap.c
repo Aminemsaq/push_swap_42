@@ -14,17 +14,18 @@ void	push_stack_a(t_data *data, t_stack *stack_a)
 void	init_push_swap(t_data data)
 {
 	t_stack *stack_a = init_stack();
+	t_stack *stack_b = init_stack();
+
 	if (!stack_a)
 		return ;
 	push_stack_a(&data, stack_a);
-	index_stack(stack_a);
-	print_stack(stack_a);
 	if (stack_a->size == 2)
 		sort_two(stack_a);
 	if (stack_a->size == 3)
 		sort_three(stack_a);
-	printf("%d\n", stack_a->top->value);
-	// print_stack_with_index(stack_a);
-	print_stack(stack_a);
+	if(stack_a->size > 3 && stack_a->size < 6)
+		sort_four_five(stack_a, stack_b);
 	free_stack(stack_a);
 }
+
+

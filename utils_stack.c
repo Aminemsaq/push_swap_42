@@ -42,23 +42,20 @@ int	pop(t_stack *stack)
 
 	if (!stack->top)
 		return (-1);
-	if (!stack->top->next)
+	current = stack->top;
+	if (!current->next)
 	{
-		value = stack->top->value;
-		free(stack->top);
+		value = current->value;
+		free(current);
 		stack->top = NULL;
 	}
 	else
 	{
-		current = stack->top;
 		while (current->next)
-		{
-			prev = current;
-			current = current->next;
-		}
+			prev = current, current = current->next;
 		value = current->value;
-		free(current);
 		prev->next = NULL;
+		free(current);
 	}
 	stack->size--;
 	return (value);
@@ -66,14 +63,21 @@ int	pop(t_stack *stack)
 
 void	free_stack(t_stack *stack)
 {
+	t_node	*temp;
+
 	while (stack->top)
-		pop(stack);
+	{
+		temp = stack->top;
+		stack->top = stack->top->next;
+		free(temp);
+	}
 	free(stack);
 }
 
 void	print_stack(t_stack *stack)
 {
-	t_node *current = stack->top;
+	t_node	*current = stack->top;
+
 	printf("Stack: ");
 	while (current)
 	{
