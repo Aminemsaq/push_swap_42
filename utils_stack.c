@@ -61,17 +61,18 @@ int	pop(t_stack *stack)
 	return (value);
 }
 
-void	free_stack(t_stack *stack)
+void free_stack(t_stack *stack)
 {
-	t_node	*temp;
+    t_node *current = stack->top;
+    t_node *next;
 
-	while (stack->top)
-	{
-		temp = stack->top;
-		stack->top = stack->top->next;
-		free(temp);
-	}
-	free(stack);
+    while (current)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    free(stack); 
 }
 
 void	print_stack(t_stack *stack)

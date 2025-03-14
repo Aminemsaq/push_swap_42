@@ -6,7 +6,7 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 21:24:48 by amsaq             #+#    #+#             */
-/*   Updated: 2025/03/13 21:47:30 by amsaq            ###   ########.fr       */
+/*   Updated: 2025/03/14 03:40:51 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	ft_isdigit(int c)
 void	free_atoi(t_data *data)
 {
 	free_data(data);
+	printf("Error");
 	exit(0);
 }
 
@@ -109,8 +110,9 @@ long	ft_atoi(const char *str, t_data *data)
 	result = 0;
 	while (ft_isdigit(str[i]))
 	{
-		if (result > INT_MAX || result < INT_MIN)
+		if (result > INT_MAX || result < INT_MIN){
 			free_atoi(data);
+		}
 		result = (result * 10) + (str[i] - 48);
 		i++;
 	}

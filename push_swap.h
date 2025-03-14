@@ -18,15 +18,17 @@ typedef struct s_node
 {
 	int				value;
 	int				index;
-	int 			index_sorted;
+	int				index_sorted;
 	struct s_node	*next;
 }					t_node;
 
 typedef struct s_stack
 {
-	t_node			*top;
-	int				size;
-}					t_stack;
+    t_node  *top;
+    int     size;
+    int     chunk_size;
+    int     num_chunks;
+} t_stack;
 
 char				*ft_strjoin(char *s1, char *s2);
 char				*ft_strdup(const char *s1);
@@ -67,4 +69,5 @@ void				index_stack(t_stack *stack);
 void				print_stack_with_index(t_stack *stack);
 void				sort_four_five(t_stack *stack_a, t_stack *stack_b);
 void				index_stack_sorted(t_stack *stack);
+void 				sort_large_stack(t_stack *stack_a, t_stack *stack_b);
 #endif

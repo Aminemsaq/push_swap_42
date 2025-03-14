@@ -27,56 +27,64 @@ void	sort_three(t_stack *stack)
 		rra(stack);
 }
 
-int find_min_index(t_stack *stack)
+int	find_min_index(t_stack *stack)
 {
-    t_node *current = stack->top;
-    int min = current->index_sorted;
-    int min_pos = 0;
-    int i = 0;
+	t_node	*current;
+	int		min;
+	int		min_pos;
+	int		i;
 
-    while (current)
-    {
-        if (current->index_sorted < min)
-        {
-            min = current->index_sorted;
-            min_pos = i;
-        }
-        current = current->next;
-        i++;
-    }
-    return min_pos;
+	current = stack->top;
+	min = current->index_sorted;
+	min_pos = 0;
+	i = 0;
+	while (current)
+	{
+		if (current->index_sorted < min)
+		{
+			min = current->index_sorted;
+			min_pos = i;
+		}
+		current = current->next;
+		i++;
+	}
+	return (min_pos);
 }
-void move_to_top(t_stack *stack, int min_index)
+void	move_to_top(t_stack *stack, int min_index)
 {
-    int size = stack->size;
+	int	size;
 
-    if (min_index <= size / 2)
-    {
-        while (min_index-- > 0)
-            ra(stack);
-    }
-    else
-    {
-        min_index = size - min_index;
-        while (min_index-- > 0)
-            rra(stack);
-    }
+	size = stack->size;
+	if (min_index <= size / 2)
+	{
+		while (min_index-- > 0)
+			ra(stack);
+	}
+	else
+	{
+		min_index = size - min_index;
+		while (min_index-- > 0)
+			rra(stack);
+	}
 }
-void sort_four_five(t_stack *stack_a, t_stack *stack_b)
+void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 {
-    int min_index;
-    int size = stack_a->size;
+	int	min_index;
+	int	size;
+
+	size = stack_a->size;
 	index_stack_sorted(stack_a);
 	index_stack(stack_a);
-    while (size > 3)
-    {
-        min_index = find_min_index(stack_a); 
-        move_to_top(stack_a, min_index); 
-        pb(stack_a, stack_b);
-        size--;
-    }
-    sort_three(stack_a);
-    while (stack_b->size > 0){
-        pa(stack_a, stack_b);
+	while (size > 3)
+	{
+		min_index = find_min_index(stack_a);
+		move_to_top(stack_a, min_index);
+		pb(stack_a, stack_b);
+		size--;
+	}
+	sort_three(stack_a);
+	while (stack_b->size > 0)
+	{
+		pa(stack_a, stack_b);
 	}
 }

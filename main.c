@@ -2,7 +2,7 @@
 
 int	main(int ac, char **av)
 {
-	t_data	data= {NULL, NULL, NULL, 0};
+	t_data	data = {NULL, NULL, NULL, 0};
 	if (ac == 1)
 		return (0);
 	if (joining(ac, av, &data) == 0)
